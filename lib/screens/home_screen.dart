@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:praktikum_5/components/banner_carousel.dart';
 import 'package:praktikum_5/components/food_categories.dart';
-import 'package:praktikum_5/components/item_card_recipe.dart';
+import 'package:praktikum_5/components/recipe_grid.dart';
 import 'package:praktikum_5/components/title_section.dart';
-import 'package:praktikum_5/configs/demo.dart';
-import 'package:praktikum_5/screens/recipe_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        centerTitle: true,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -46,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.all(6),
               child: Icon(Icons.search),
             ),
-          ),
+          )
         ],
       ),
       body: CustomScrollView(
@@ -58,32 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
           TitleSection(title: "Jenis Makanan", onPressed: () {}),
           SliverToBoxAdapter(child: FoodCategories()),
           TitleSection(title: "Resep", onPressed: () {}),
-          // make list 2 grid column
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 0,
-                childAspectRatio: 1,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                // in each item give image and text below it
-                (context, index) => ItemCardRecipe(
-                  image: banners[index],
-                  title: "Resep Makanan ${index + 1}",
-                  onTap:
-                      () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RecipeDetailScreen(),
-                        ),
-                      ),
-                ),
-                childCount: banners.length,
-              ),
-            ),
+            sliver: RecipeGrid(),
           ),
         ],
       ),
