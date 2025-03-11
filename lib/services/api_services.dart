@@ -5,11 +5,11 @@ import 'package:praktikum_5/models/category_model.dart';
 import 'package:praktikum_5/models/recipe_model.dart';
 
 class ApiServices {
-  static var API_URL = "https://polindra.cicd.my.id/items/";
-  static var ASSET_URL = "https://polindra.cicd.my.id/assets/";
+  static var API_URL = 'https://polindra.cicd.my.id/items/';
+  static var ASSET_URL = 'https://polindra.cicd.my.id/assets/';
 
-  static Uri getUri(String collelction) {
-    return Uri.parse('${API_URL}${collelction}');
+  static Uri getUri(String collection) {
+    return Uri.parse('${API_URL}${collection}');
   }
 
   static String getAsset(String id) {

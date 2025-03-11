@@ -7,8 +7,8 @@ class BannerModel{
 
   factory BannerModel.fromJson(Map<String, dynamic> json){
     return BannerModel(
-      image: json['name'],
-      title: json['image'],
+      image: json['image'],
+      title: json['title'],
       description: json['description']
     );
   }
